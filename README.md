@@ -12,4 +12,3 @@
 - fullgaps
 - splitstatus
 - systray
-- vtcolors
