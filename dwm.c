@@ -854,6 +854,7 @@ drawbar(Monitor *m)
         drw_text(drw, m->ww - tw - stw, 0, tw, bh, lrpad / 2 - 2, rstext, 0);
 	}
 	drw_map(drw, m->barwin, 0, 0, m->ww - stw, bh);
+        XSetWindowBorderWidth(dpy, m->barwin, borderpx);
         XSetWindowBorder(dpy, m->barwin, scheme[SchemeSel][ColBorder].pixel);
 }
 
@@ -2011,6 +2012,7 @@ updatebars(void)
 {
 	unsigned int w;
 	Monitor *m;
+
 	XSetWindowAttributes wa = {
 		.override_redirect = True,
 		.background_pixel = 0,
@@ -2025,15 +2027,17 @@ updatebars(void)
 		w = m->ww;
 		if (showsystray && m == systraytomon(m))
 			w -= getsystraywidth();
-		m->barwin = XCreateWindow(dpy, root, m->wx + sp, m->by + vp, w - 2 * sp, bh, 0, depth,
+		m->barwin = XCreateWindow(dpy, root, m->wx + sp, m->by + vp, w - 2 * sp, bh, borderpx, depth,
 		                          InputOutput, visual,
 		                          CWOverrideRedirect|CWBackPixel|CWBorderPixel|CWColormap|CWEventMask, &wa);
+
+                XWindowChanges wc;
 		XDefineCursor(dpy, m->barwin, cursor[CurNormal]->cursor);
 		if (showsystray && m == systraytomon(m))
 			XMapRaised(dpy, systray->win);
 		XMapRaised(dpy, m->barwin);
 		XSetClassHint(dpy, m->barwin, &ch);
-                XSetWindowBorder(dpy, m->barwin, scheme[SchemeNorm][ColBorder].pixel);
+                XConfigureWindow(dpy, m->barwin, CWBorderWidth, &wc);
 	}
 }
 
