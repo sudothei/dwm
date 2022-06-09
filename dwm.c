@@ -854,6 +854,7 @@ drawbar(Monitor *m)
         drw_text(drw, m->ww - tw - stw, 0, tw, bh, lrpad / 2 - 2, rstext, 0);
 	}
 	drw_map(drw, m->barwin, 0, 0, m->ww - stw, bh);
+        XSetWindowBorder(dpy, m->barwin, scheme[SchemeSel][ColBorder].pixel);
 }
 
 void
@@ -2013,7 +2014,7 @@ updatebars(void)
 	XSetWindowAttributes wa = {
 		.override_redirect = True,
 		.background_pixel = 0,
-		.border_pixel = 0,
+		.border_pixel = 1,
 		.colormap = cmap,
 		.event_mask = ButtonPressMask|ExposureMask
 	};
@@ -2032,6 +2033,7 @@ updatebars(void)
 			XMapRaised(dpy, systray->win);
 		XMapRaised(dpy, m->barwin);
 		XSetClassHint(dpy, m->barwin, &ch);
+                XSetWindowBorder(dpy, m->barwin, scheme[SchemeNorm][ColBorder].pixel);
 	}
 }
 

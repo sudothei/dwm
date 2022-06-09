@@ -22,11 +22,11 @@ static const char col_chartreuse[]  = "#00ff00";
 static const char col_bg[]          = "#061009";
 static const char col_fg[]          = "#cbe7c7";
 static const char col_green1[]      = "#249368";
-static const unsigned int baralpha        = 0xd0;
+static const unsigned int baralpha        = 102;
 static const unsigned int borderalpha     = OPAQUE;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_fg, col_bg, col_chartreuse },
+	[SchemeNorm] = { col_fg, col_bg, col_green1 },
 	[SchemeSel]  = { col_fg, col_green1,  col_chartreuse  },
 };
 static const unsigned int alphas[][3] = {
