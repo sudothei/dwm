@@ -18,12 +18,11 @@ static const int vertpad            = 10;       /* vertical padding of bar */
 static const int sidepad            = 10;       /* horizontal padding of bar */
 static const char *fonts[]          = { "Monospace:size=18" };
 static const int statusfontindex    =0;          //select font of font list to use for statusbar
-static const char col_cyan[]        = "#005577";
 static const char col_chartreuse[]  = "#00ff00";
 static const char col_bg[]          = "#061009";
 static const char col_fg[]          = "#cbe7c7";
 static const char col_green1[]      = "#249368";
-static const unsigned int baralpha        = 0x00;
+static const unsigned int baralpha        = 0xd0;
 static const unsigned int borderalpha     = OPAQUE;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
