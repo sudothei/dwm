@@ -6,9 +6,9 @@
 - actualfullscreen
 - bar-height
 - barpadding
-- colorbar
 - dragmfact
 - fibonacci
 - fullgaps
 - splitstatus
 - systray
+- alpha
